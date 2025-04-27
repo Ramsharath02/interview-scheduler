@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Calendar, Mail, Phone } from 'lucide-react';
 
+
 interface LayoutProps {
   children: ReactNode;
 }
@@ -15,9 +16,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <h1 className="text-xl font-semibold text-gray-900">Interview Scheduler</h1>
           </div>
           <nav className="flex space-x-4">
-            <a href="#" className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
-              Home
-            </a>
+          <a href="#" className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+>
+  Home
+</a>
             <a href="#" className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
               About
             </a>

@@ -4,7 +4,7 @@ import SchedulingPanel from './SchedulingPanel';
 import { BookingData, Step } from '../types';
 
 const SchedulerContainer: React.FC = () => {
-  const [currentStep, setCurrentStep] = useState<Step>('date');
+  const [currentStep, setCurrentStep] = useState<Step>('prescreening');
   const [bookingData, setBookingData] = useState<BookingData>({
     date: null,
     time: null,
@@ -12,6 +12,8 @@ const SchedulerContainer: React.FC = () => {
     email: '',
     notes: '',
     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    wantsJob: null,
+    speaksEnglish: null,
   });
 
   const updateBookingData = (data: Partial<BookingData>) => {
@@ -19,7 +21,8 @@ const SchedulerContainer: React.FC = () => {
   };
 
   const nextStep = () => {
-    if (currentStep === 'date') setCurrentStep('time');
+    if (currentStep === 'prescreening') setCurrentStep('date');
+    else if (currentStep === 'date') setCurrentStep('time');
     else if (currentStep === 'time') setCurrentStep('details');
     else if (currentStep === 'details') setCurrentStep('confirmation');
   };

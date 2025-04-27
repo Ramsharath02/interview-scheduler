@@ -3,6 +3,7 @@ import DateSelector from './steps/DateSelector';
 import TimeSelector from './steps/TimeSelector';
 import ContactDetails from './steps/ContactDetails';
 import Confirmation from './steps/Confirmation';
+import PreScreening from './steps/PreScreening';
 import ProgressIndicator from './ProgressIndicator';
 import { BookingData, Step } from '../types';
 
@@ -23,9 +24,18 @@ const SchedulingPanel: React.FC<SchedulingPanelProps> = ({
 }) => {
   return (
     <div className="lg:w-2/3 p-6 lg:p-8">
-      <ProgressIndicator currentStep={currentStep} />
+      {currentStep !== 'prescreening' && <ProgressIndicator currentStep={currentStep} />}
       
       <div className="mt-6">
+        {currentStep === 'prescreening' && (
+          <PreScreening
+            wantsJob={bookingData.wantsJob}
+            speaksEnglish={bookingData.speaksEnglish}
+            onChange={(data) => updateBookingData(data)}
+            onNext={nextStep}
+          />
+        )}
+        
         {currentStep === 'date' && (
           <DateSelector
             selectedDate={bookingData.date}
